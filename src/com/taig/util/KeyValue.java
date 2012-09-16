@@ -4,7 +4,9 @@ package com.taig.util;
  * A generic KeyValue-implementation.
  * 
  * @param <K>
+ *            The key's type.
  * @param <V>
+ *            The value's type.
  */
 public class KeyValue<K, V>
 {
@@ -67,7 +69,6 @@ public class KeyValue<K, V>
 	@Override
 	public boolean equals( Object object )
 	{
-		System.out.println("eq");
 		if( object instanceof KeyValue<?, ?> )
 		{
 			KeyValue<?, ?> element = (KeyValue<?, ?>) object;
