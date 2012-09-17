@@ -65,9 +65,19 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends LinkedHashSet<T>
 	{
 		for( T element : this )
 		{
-			if( element.getKey().equals( key ) )
+			if( element.getKey() == null )
 			{
-				return element;
+				if( key == null )
+				{
+					return element;
+				}
+			}
+			else
+			{
+				if( element.getKey().equals( key ) )
+				{
+					return element;
+				}
 			}
 		}
 
