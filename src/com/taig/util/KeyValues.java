@@ -37,4 +37,50 @@ public class KeyValues<K, V> extends KeyValue<K, Collection<V>>
 	{
 		super( key, values );
 	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		if( getKey() == null )
+		{
+			stringBuilder.append( "null" );
+		}
+		else
+		{
+			stringBuilder.append( getKey() );
+		}
+		
+		stringBuilder.append( " => " );
+		
+		
+		
+		if( getValue() == null )
+		{
+			stringBuilder.append( "null" );
+		}
+		else
+		{
+			if( getValue().size() == 1 )
+			{
+				stringBuilder.append( getValue().iterator().next() );
+			}
+			else
+			{
+				stringBuilder.append( "{ " );
+				
+				StringBuilder params = new StringBuilder();
+				for( V value : getValue() )
+				{
+					params.append( ", " );
+					params.append( value );
+				}
+				
+				stringBuilder.append( params.delete( 0, 2 ) ).append( " }" );
+			}
+		}
+		
+		return stringBuilder.toString();
+	}
 }

@@ -84,4 +84,24 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends LinkedHashSet<T>
 	{
 		return get( key ) != null;
 	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder stringBuilder = new StringBuilder( this.getClass().getSimpleName() ).append( " [" );
+
+		if( size() > 0 )
+		{
+			stringBuilder.append( "\n" );
+
+			for( T keyValue : this )
+			{
+				stringBuilder.append( "\t" );
+				stringBuilder.append( keyValue.toString() );
+				stringBuilder.append( "\n" );
+			}
+		}
+
+		return stringBuilder.append( "]" ).toString();
+	}
 }

@@ -44,4 +44,10 @@ public class Triple<L, M, R> extends Tuple<L, R>
 	{
 		this.middle = middle;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "( " + getLeft() + ", " + getMiddle() + ", " + getRight() + " )";
+	}
 }

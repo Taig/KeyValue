@@ -82,6 +82,19 @@ public class KeyValue<K, V>
 	@Override
 	public int hashCode()
 	{
-		return key.hashCode();
+		if( key == null )
+		{
+			return 0;
+		}
+		else
+		{
+			return key.hashCode();
+		}
+	}
+
+	@Override
+	public String toString()
+	{
+		return key + " => " + value;
 	}
 }

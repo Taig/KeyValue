@@ -59,4 +59,10 @@ public class Tuple<L, R> extends KeyValue<L, R>
 	{
 		setValue( right );
 	}
+
+	@Override
+	public String toString()
+	{
+		return "( " + getLeft() + ", " + getRight() + " )";
+	}
 }
