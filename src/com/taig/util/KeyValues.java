@@ -1,7 +1,6 @@
 package com.taig.util;
 
 import java.util.Collection;
-import java.util.LinkedList;
 
 /**
  * A convenience extension of the {@link KeyValue} class specialized on a
@@ -15,18 +14,6 @@ import java.util.LinkedList;
 public class KeyValues<K, V> extends KeyValue<K, Collection<V>>
 {
 	/**
-	 * Construct a {@link KeyValues} object with a single value.
-	 * 
-	 * @param key
-	 * @param value
-	 */
-	public KeyValues( K key, V value )
-	{
-		this( key, new LinkedList<V>() );
-		getValue().add( value );
-	}
-
-	/**
 	 * Construct a {@link KeyValues} object based on a {@link Collection} of
 	 * values.
 	 * 
@@ -38,49 +25,25 @@ public class KeyValues<K, V> extends KeyValue<K, Collection<V>>
 		super( key, values );
 	}
 
-	@Override
-	public String toString()
+	/**
+	 * Convenience method for semantical correctness. Equal to
+	 * {@link #getValue()}.
+	 * 
+	 * @return
+	 */
+	public Collection<V> getValues()
 	{
-		StringBuilder stringBuilder = new StringBuilder();
-		
-		if( getKey() == null )
-		{
-			stringBuilder.append( "null" );
-		}
-		else
-		{
-			stringBuilder.append( getKey() );
-		}
-		
-		stringBuilder.append( " => " );
-		
-		
-		
-		if( getValue() == null )
-		{
-			stringBuilder.append( "null" );
-		}
-		else
-		{
-			if( getValue().size() == 1 )
-			{
-				stringBuilder.append( getValue().iterator().next() );
-			}
-			else
-			{
-				stringBuilder.append( "{ " );
-				
-				StringBuilder params = new StringBuilder();
-				for( V value : getValue() )
-				{
-					params.append( ", " );
-					params.append( value );
-				}
-				
-				stringBuilder.append( params.delete( 0, 2 ) ).append( " }" );
-			}
-		}
-		
-		return stringBuilder.toString();
+		return getValue();
+	}
+
+	/**
+	 * Convenience method for semantical correctness. Equal to
+	 * {@link #setValue(Object)}.
+	 * 
+	 * @return
+	 */
+	public void setValues( Collection<V> values )
+	{
+		setValue( values );
 	}
 }

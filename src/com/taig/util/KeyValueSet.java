@@ -1,7 +1,8 @@
 package com.taig.util;
 
 import java.util.Collection;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * A {@link java.util.Set Set} for {@link KeyValue} objects. Provides additional
@@ -11,7 +12,7 @@ import java.util.LinkedHashSet;
  * @param <T>
  *            The {@link KeyValue KeyValue's} type.
  */
-public class KeyValueSet<T extends KeyValue<?, ?>> extends LinkedHashSet<T>
+public class KeyValueSet<T extends KeyValue<?, ?>> extends HashSet<T>
 {
 	private static final long	serialVersionUID	= -3477324045431734981L;
 
@@ -65,19 +66,9 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends LinkedHashSet<T>
 	{
 		for( T element : this )
 		{
-			if( element.getKey() == null )
+			if( element.getKey().equals( key ) )
 			{
-				if( key == null )
-				{
-					return element;
-				}
-			}
-			else
-			{
-				if( element.getKey().equals( key ) )
-				{
-					return element;
-				}
+				return element;
 			}
 		}
 
@@ -95,23 +86,38 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends LinkedHashSet<T>
 		return get( key ) != null;
 	}
 
-	@Override
-	public String toString()
+	/**
+	 * Generate a formatted String based on the {@link Collection Collection's}
+	 * elements.
+	 * 
+	 * @param pattern
+	 *            The String.format parameter (e.g. "[%s]").
+	 * @param glue
+	 *            The String used to concatenate the {@link Collection
+	 *            Collection's} elements.
+	 * @return
+	 * @see String#format(String, Object...)
+	 */
+	public String toString( String pattern, String glue )
 	{
-		StringBuilder stringBuilder = new StringBuilder( this.getClass().getSimpleName() ).append( " [" );
+		StringBuilder stringBuilder = new StringBuilder();
 
-		if( size() > 0 )
+		for( Iterator<T> iterator = iterator(); iterator.hasNext(); )
 		{
-			stringBuilder.append( "\n" );
+			stringBuilder.append( iterator.next() );
 
-			for( T keyValue : this )
+			if( iterator.hasNext() )
 			{
-				stringBuilder.append( "\t" );
-				stringBuilder.append( keyValue.toString() );
-				stringBuilder.append( "\n" );
+				stringBuilder.append( glue );
 			}
 		}
 
-		return stringBuilder.append( "]" ).toString();
+		return String.format( pattern, stringBuilder );
+	}
+
+	@Override
+	public String toString()
+	{
+		return toString( "[%s]", ", " );
 	}
 }

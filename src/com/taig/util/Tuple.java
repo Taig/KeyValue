@@ -63,6 +63,6 @@ public class Tuple<L, R> extends KeyValue<L, R>
 	@Override
 	public String toString()
 	{
-		return "( " + getLeft() + ", " + getRight() + " )";
+		return super.toString( "(%s, %s)" );
 	}
 }

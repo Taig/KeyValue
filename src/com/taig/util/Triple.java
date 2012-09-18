@@ -44,10 +44,24 @@ public class Triple<L, M, R> extends Tuple<L, R>
 	{
 		this.middle = middle;
 	}
-	
+
+	/**
+	 * Generate a formatted String consisting of three Strings [left, middle,
+	 * right].
+	 * 
+	 * @param pattern
+	 *            The String.format parameter (e.g. "(%s, %s, %s)").
+	 * @return
+	 * @see String#format(String, Object...)
+	 */
+	public String toString( String pattern )
+	{
+		return String.format( pattern, getLeft(), middle, getRight() );
+	}
+
 	@Override
 	public String toString()
 	{
-		return "( " + getLeft() + ", " + getMiddle() + ", " + getRight() + " )";
+		return toString( "(%s, %s, %s)" );
 	}
 }

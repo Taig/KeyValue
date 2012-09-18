@@ -22,8 +22,8 @@ public class KeyValue<K, V>
 	 */
 	public KeyValue( K key, V value )
 	{
-		this.key = key;
-		this.value = value;
+		setKey( key );
+		setValue( value );
 	}
 
 	/**
@@ -43,7 +43,14 @@ public class KeyValue<K, V>
 	 */
 	public void setKey( K key )
 	{
-		this.key = key;
+		if( key == null )
+		{
+			throw new IllegalArgumentException( "The key may not be null." );
+		}
+		else
+		{
+			this.key = key;
+		}
 	}
 
 	/**
@@ -92,9 +99,22 @@ public class KeyValue<K, V>
 		}
 	}
 
+	/**
+	 * Generate a formatted String consisting of two Strings [key, value].
+	 * 
+	 * @param pattern
+	 *            The String.format parameter (e.g. "%s, %s").
+	 * @return
+	 * @see String#format(String, Object...)
+	 */
+	public String toString( String pattern )
+	{
+		return String.format( pattern, key, value );
+	}
+
 	@Override
 	public String toString()
 	{
-		return key + " => " + value;
+		return toString( "%s => %s" );
 	}
 }
