@@ -1,4 +1,4 @@
-package com.taig.util;
+package com.taig.keyvalue;
 
 /**
  * The logical continuation of a {@link Tuple}. Is equipped an additional field

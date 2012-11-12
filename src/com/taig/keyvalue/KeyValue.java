@@ -1,4 +1,4 @@
-package com.taig.util;
+package com.taig.keyvalue;
 
 /**
  * A generic KeyValue-implementation.

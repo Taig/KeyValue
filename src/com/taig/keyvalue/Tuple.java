@@ -1,4 +1,4 @@
-package com.taig.util;
+package com.taig.keyvalue;
 
 /**
  * A semantic alternative to a {@link KeyValue} class. Provides no additional
