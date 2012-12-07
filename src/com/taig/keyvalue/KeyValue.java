@@ -2,23 +2,21 @@ package com.taig.keyvalue;
 
 /**
  * A generic KeyValue-implementation.
- * 
- * @param <K>
- *            The key's type.
- * @param <V>
- *            The value's type.
+ *
+ * @param <K> The key's type.
+ * @param <V> The value's type.
  */
 public class KeyValue<K, V>
 {
-	private K	key;
+	private K key;
 
-	private V	value;
+	private V value;
 
 	/**
 	 * Construct a KeyValue object.
-	 * 
-	 * @param key
-	 * @param value
+	 *
+	 * @param key   A key value. May not be <code>null</code>.
+	 * @param value The payload value. May be <code>null</code>.
 	 */
 	public KeyValue( K key, V value )
 	{
@@ -28,8 +26,8 @@ public class KeyValue<K, V>
 
 	/**
 	 * Retrieve the key.
-	 * 
-	 * @return
+	 *
+	 * @return The key value.
 	 */
 	public K getKey()
 	{
@@ -38,8 +36,8 @@ public class KeyValue<K, V>
 
 	/**
 	 * Set the key.
-	 * 
-	 * @param key
+	 *
+	 * @param key A key value. May not be <code>null</code>.
 	 */
 	public void setKey( K key )
 	{
@@ -55,8 +53,8 @@ public class KeyValue<K, V>
 
 	/**
 	 * Retrieve the value.
-	 * 
-	 * @return
+	 *
+	 * @return The payload value. May be <code>null</code>.
 	 */
 	public V getValue()
 	{
@@ -65,25 +63,12 @@ public class KeyValue<K, V>
 
 	/**
 	 * Set the value.
-	 * 
-	 * @param value
+	 *
+	 * @param value Set the payload value. May be <code>null</code>.
 	 */
 	public void setValue( V value )
 	{
 		this.value = value;
-	}
-
-	@Override
-	public boolean equals( Object object )
-	{
-		if( object instanceof KeyValue<?, ?> )
-		{
-			KeyValue<?, ?> element = (KeyValue<?, ?>) object;
-
-			return key.equals( element.getKey() );
-		}
-
-		return false;
 	}
 
 	@Override
@@ -99,22 +84,34 @@ public class KeyValue<K, V>
 		}
 	}
 
-	/**
-	 * Generate a formatted String consisting of two Strings [key, value].
-	 * 
-	 * @param pattern
-	 *            The String.format parameter (e.g. "%s, %s").
-	 * @return
-	 * @see String#format(String, Object...)
-	 */
-	public String toString( String pattern )
+	@Override
+	public boolean equals( Object object )
 	{
-		return String.format( pattern, key, value );
+		if( object != null && object instanceof KeyValue<?, ?> )
+		{
+			KeyValue<?, ?> element = (KeyValue<?, ?>) object;
+
+			return key.equals( element.getKey() );
+		}
+
+		return false;
 	}
 
 	@Override
 	public String toString()
 	{
 		return toString( "%s => %s" );
+	}
+
+	/**
+	 * Generate a formatted String consisting of two Strings [key, value].
+	 *
+	 * @param pattern The String.format parameter (e.g. "%s, %s").
+	 * @return A string representation based on the given pattern (e.g. '"taig" => "great"' for the pattern "%s => %s").
+	 * @see String#format(String, Object...)
+	 */
+	public String toString( String pattern )
+	{
+		return String.format( pattern, key, value );
 	}
 }

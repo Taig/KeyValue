@@ -5,17 +5,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * A {@link java.util.Set Set} for {@link KeyValue} objects. Provides additional
- * methods to manage the {@link java.util.Set Set} with the {@link KeyValue
- * KeyValue's} key.
- * 
- * @param <T>
- *            The {@link KeyValue KeyValue's} type.
+ * A {@link java.util.Set Set} for {@link KeyValue} objects. Provides additional methods to manage the {@link
+ * java.util.Set Set} with the {@link KeyValue KeyValue's} key.
+ *
+ * @param <K>
+ * @param <V>
  */
-public class KeyValueSet<T extends KeyValue<?, ?>> extends HashSet<T>
+public class KeyValueSet<K, V> extends HashSet<KeyValue<K, V>>
 {
-	private static final long	serialVersionUID	= -3477324045431734981L;
-
 	/**
 	 * Construct a {@link KeyValueSet}.
 	 */
@@ -26,8 +23,8 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends HashSet<T>
 
 	/**
 	 * Construct a {@link KeyValueSet} with an initial capacity.
-	 * 
-	 * @param initialCapacity
+	 *
+	 * @param initialCapacity {@inheritDoc}
 	 */
 	public KeyValueSet( int initialCapacity )
 	{
@@ -35,11 +32,10 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends HashSet<T>
 	}
 
 	/**
-	 * Construct a {@link KeyValueSet} with an initial capacity and the load
-	 * factor.
-	 * 
-	 * @param initialCapacity
-	 * @param loadFactor
+	 * Construct a {@link KeyValueSet} with an initial capacity and the load factor.
+	 *
+	 * @param initialCapacity {@inheritDoc}
+	 * @param loadFactor      {@inheritDoc}
 	 */
 	public KeyValueSet( int initialCapacity, float loadFactor )
 	{
@@ -48,27 +44,27 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends HashSet<T>
 
 	/**
 	 * Construct a {@link KeyValueSet} based on a given {@link Collection}.
-	 * 
-	 * @param collection
+	 *
+	 * @param collection {@inheritDoc}
 	 */
-	public KeyValueSet( Collection<T> collection )
+	public KeyValueSet( Collection<KeyValue<K, V>> collection )
 	{
 		super( collection );
 	}
 
 	/**
-	 * Retrieve a {@link KeyValue} object by its key.
-	 * 
-	 * @param key
-	 * @return
+	 * Retrieve a value by its key.
+	 *
+	 * @param key The key that will be searched for in the Set.
+	 * @return The first value with the given key or <code>null</code> if the key was not found.
 	 */
-	public T get( Object key )
+	public V get( K key )
 	{
-		for( T element : this )
+		for( KeyValue<K, V> element : this )
 		{
 			if( element.getKey().equals( key ) )
 			{
-				return element;
+				return element.getValue();
 			}
 		}
 
@@ -77,32 +73,36 @@ public class KeyValueSet<T extends KeyValue<?, ?>> extends HashSet<T>
 
 	/**
 	 * Check if the given key exists in the {@link Collection}.
-	 * 
-	 * @param key
-	 * @return
+	 *
+	 * @param key The key that will be searched.
+	 * @return <code>true</code> if the key exists at least once, otherwise <code>false</code>.
 	 */
-	public boolean containsKey( Object key )
+	public boolean containsKey( K key )
 	{
-		return get( key ) != null;
+		for( KeyValue<K, V> element : this )
+		{
+			if( element.getKey().equals( key ) )
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
-	 * Generate a formatted String based on the {@link Collection Collection's}
-	 * elements.
-	 * 
-	 * @param pattern
-	 *            The String.format parameter (e.g. "[%s]").
-	 * @param glue
-	 *            The String used to concatenate the {@link Collection
-	 *            Collection's} elements.
-	 * @return
+	 * Generate a formatted String based on the {@link Collection Collection's} elements.
+	 *
+	 * @param pattern The String.format parameter (e.g. "[%s]").
+	 * @param glue    The String used to concatenate the {@link Collection Collection's} elements.
+	 * @return The formatted String.
 	 * @see String#format(String, Object...)
 	 */
 	public String toString( String pattern, String glue )
 	{
 		StringBuilder stringBuilder = new StringBuilder();
 
-		for( Iterator<T> iterator = iterator(); iterator.hasNext(); )
+		for( Iterator<KeyValue<K, V>> iterator = iterator(); iterator.hasNext(); )
 		{
 			stringBuilder.append( iterator.next() );
 
