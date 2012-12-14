@@ -1,4 +1,4 @@
-package com.taig.keyvalue;
+package com.taig.util;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class LinkedKeyValueHashMap<K, V> extends LinkedHashMap<K, V>
 		return super.put( keyValue.getKey(), keyValue.getValue() );
 	}
 
-	public V remove( KeyValue<K,V> keyValue )
+	public V remove( KeyValue<K, V> keyValue )
 	{
 		return super.remove( keyValue.getKey() );
 	}

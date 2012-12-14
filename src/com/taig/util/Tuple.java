@@ -5,7 +5,7 @@
  * To Public License, Version 2, as published by Sam Hocevar. See
  * http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-package com.taig.keyvalue;
+package com.taig.util;
 
 /**
  * A semantic alternative to a {@link KeyValue} class. Provides no additional functionalities.
