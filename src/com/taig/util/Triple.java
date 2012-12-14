@@ -8,54 +8,54 @@
 package com.taig.util;
 
 /**
- * The logical continuation of a {@link Tuple}. Is equipped with an additional field (middle).
+ * The logical continuation of a {@link Tuple}. Is equipped with an additional field (third).
  *
- * @param <L> {@inheritDoc}
- * @param <M> The middle item's type.
- * @param <R> {@inheritDoc}
+ * @param <First>  The first item's type.
+ * @param <Second> The second item's type.
+ * @param <Third>  The third item's type.
  */
-public class Triple<L, M, R> extends Tuple<L, R>
+public class Triple<First, Second, Third> extends Tuple<First, Second>
 {
 	/**
-	 * The middle item.
+	 * The third item.
 	 */
-	private M middle;
+	private Third third;
 
 	/**
 	 * Construct a {@link Triple}.
 	 *
-	 * @param left   The Triple's left item.
-	 * @param middle The Triple's middle item.
-	 * @param right  The Triple's right item.
+	 * @param first  The Triple's first item.
+	 * @param second The Triple's second item.
+	 * @param third  The Triple's third item.
 	 */
-	public Triple( L left, M middle, R right )
+	public Triple( First first, Second second, Third third )
 	{
-		super( left, right );
-		this.middle = middle;
+		super( first, second );
+		this.third = third;
 	}
 
 	/**
-	 * Get the {@link Triple Triple's} middle element.
+	 * Get the {@link Triple Triple's} third element.
 	 *
-	 * @return The Triple's middle item.
+	 * @return The Triple's third item.
 	 */
-	public M getMiddle()
+	public Third getThird()
 	{
-		return middle;
+		return third;
 	}
 
 	/**
-	 * Set the {@link Triple Triple's} middle element.
+	 * Set the {@link Triple Triple's} third element.
 	 *
-	 * @param middle The Triple's middle item.
+	 * @param third The Triple's third item.
 	 */
-	public void setMiddle( M middle )
+	public void setThird( Third third )
 	{
-		this.middle = middle;
+		this.third = third;
 	}
 
 	/**
-	 * Generate a formatted String consisting of three Strings [left, middle, right].
+	 * Generate a formatted String consisting of three Strings [first, second, third].
 	 *
 	 * @param pattern The String.format parameter (e.g. "(%s, %s, %s)").
 	 * @return The formatted String.
@@ -63,7 +63,7 @@ public class Triple<L, M, R> extends Tuple<L, R>
 	 */
 	public String toString( String pattern )
 	{
-		return String.format( pattern, getLeft(), middle, getRight() );
+		return String.format( pattern, getFirst(), getSecond(), third );
 	}
 
 	@Override

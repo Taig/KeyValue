@@ -10,60 +10,60 @@ package com.taig.util;
 /**
  * A semantic alternative to a {@link KeyValue} class. Provides no additional functionalities.
  *
- * @param <L> The left item's type (the key).
- * @param <R> The right item's type (the value).
+ * @param <First> The first item's type (the key).
+ * @param <Second> The second item's type (the value).
  */
-public class Tuple<L, R> extends KeyValue<L, R>
+public class Tuple<First, Second> extends KeyValue<First, Second>
 {
 	/**
 	 * Construct a {@link Tuple}.
 	 *
-	 * @param left  The Tuple's left item.
-	 * @param right The Tuple's right item.
+	 * @param first  The Tuple's first item.
+	 * @param second The Tuple's second item.
 	 */
-	public Tuple( L left, R right )
+	public Tuple( First first, Second second )
 	{
-		super( left, right );
+		super( first, second );
 	}
 
 	/**
-	 * Get the {@link Tuple Tuple's} left item (the key).
+	 * Get the {@link Tuple Tuple's} first item (the key).
 	 *
-	 * @return The Tuple's left item (the key).
+	 * @return The Tuple's first item (the key).
 	 */
-	public L getLeft()
+	public First getFirst()
 	{
 		return getKey();
 	}
 
 	/**
-	 * Set the {@link Tuple Tuple's} left item (the key).
+	 * Set the {@link Tuple Tuple's} first item (the key).
 	 *
-	 * @param left The Tuple's left item (the key).
+	 * @param first The Tuple's first item (the key).
 	 */
-	public void setLeft( L left )
+	public void setFirst( First first )
 	{
-		setKey( left );
+		setKey( first );
 	}
 
 	/**
-	 * Get the {@link Tuple Tuple's} right item (the value).
+	 * Get the {@link Tuple Tuple's} second item (the value).
 	 *
-	 * @return The Tuple's right item (the value).
+	 * @return The Tuple's second item (the value).
 	 */
-	public R getRight()
+	public Second getSecond()
 	{
 		return getValue();
 	}
 
 	/**
-	 * Set the {@link Tuple Tuple's} right item (the value).
+	 * Set the {@link Tuple Tuple's} second item (the value).
 	 *
-	 * @param right The Tuple's right item (the value).
+	 * @param second The Tuple's second item (the value).
 	 */
-	public void setRight( R right )
+	public void setSecond( Second second )
 	{
-		setValue( right );
+		setValue( second );
 	}
 
 	@Override
