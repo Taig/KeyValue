@@ -39,7 +39,7 @@ public class Triple<First, Second, Third> extends Tuple<First, Second>
 	 *
 	 * @return The Triple's third item.
 	 */
-	public Third getThird()
+	public Third third()
 	{
 		return third;
 	}
@@ -49,7 +49,7 @@ public class Triple<First, Second, Third> extends Tuple<First, Second>
 	 *
 	 * @param third The Triple's third item.
 	 */
-	public void setThird( Third third )
+	public void third( Third third )
 	{
 		this.third = third;
 	}
@@ -63,7 +63,7 @@ public class Triple<First, Second, Third> extends Tuple<First, Second>
 	 */
 	public String toString( String pattern )
 	{
-		return String.format( pattern, getFirst(), getSecond(), third );
+		return String.format( pattern, first(), second(), third );
 	}
 
 	@Override

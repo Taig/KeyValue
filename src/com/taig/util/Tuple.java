@@ -31,7 +31,7 @@ public class Tuple<First, Second> extends KeyValue<First, Second>
 	 *
 	 * @return The Tuple's first item (the key).
 	 */
-	public First getFirst()
+	public First first()
 	{
 		return getKey();
 	}
@@ -41,7 +41,7 @@ public class Tuple<First, Second> extends KeyValue<First, Second>
 	 *
 	 * @param first The Tuple's first item (the key).
 	 */
-	public void setFirst( First first )
+	public void first( First first )
 	{
 		setKey( first );
 	}
@@ -51,7 +51,7 @@ public class Tuple<First, Second> extends KeyValue<First, Second>
 	 *
 	 * @return The Tuple's second item (the value).
 	 */
-	public Second getSecond()
+	public Second second()
 	{
 		return getValue();
 	}
@@ -61,7 +61,7 @@ public class Tuple<First, Second> extends KeyValue<First, Second>
 	 *
 	 * @param second The Tuple's second item (the value).
 	 */
-	public void setSecond( Second second )
+	public void second( Second second )
 	{
 		setValue( second );
 	}
